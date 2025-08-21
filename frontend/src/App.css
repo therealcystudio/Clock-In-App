@@ -1,0 +1,89 @@
+.App {
+  text-align: center;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #555;
+  margin-bottom: 15px;
+}
+
+p {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.form-group {
+  text-align: left;
+}
+
+.btn {
+  min-width: 120px;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.table {
+  font-size: 14px;
+}
+
+.table th {
+  background: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+.status-badge {
+  display: inline-block;
+  min-width: 80px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+  
+  .card {
+    padding: 20px;
+  }
+  
+  .table {
+    font-size: 12px;
+  }
+  
+  .table th,
+  .table td {
+    padding: 8px;
+  }
+}
+
+/* Admin View Styles */
+.table-responsive {
+  overflow-x: auto;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+} 

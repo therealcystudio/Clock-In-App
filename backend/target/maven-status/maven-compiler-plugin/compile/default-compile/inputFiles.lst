@@ -1,0 +1,8 @@
+/Users/howardzhou/Desktop/clockin/backend/src/main/java/com/clockin/EmployeeClockinApplication.java
+/Users/howardzhou/Desktop/clockin/backend/src/main/java/com/clockin/repository/TimeEntryRepository.java
+/Users/howardzhou/Desktop/clockin/backend/src/main/java/com/clockin/dto/TimeEntryResponse.java
+/Users/howardzhou/Desktop/clockin/backend/src/main/java/com/clockin/controller/TimeEntryController.java
+/Users/howardzhou/Desktop/clockin/backend/src/main/java/com/clockin/model/TimeEntry.java
+/Users/howardzhou/Desktop/clockin/backend/src/main/java/com/clockin/controller/AdminController.java
+/Users/howardzhou/Desktop/clockin/backend/src/main/java/com/clockin/service/TimeEntryService.java
+/Users/howardzhou/Desktop/clockin/backend/src/main/java/com/clockin/dto/LoginRequest.java
