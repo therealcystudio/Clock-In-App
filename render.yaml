@@ -1,0 +1,45 @@
+services:
+  # Backend API Service
+  - type: web
+    name: clockin-backend
+    env: docker
+    region: oregon
+    plan: free
+    buildCommand: ./mvnw clean package -DskipTests
+    startCommand: java -jar target/employee-clockin-0.0.1-SNAPSHOT.jar
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: DATABASE_URL
+        fromDatabase:
+          name: clockin-db
+          property: connectionString
+      - key: DB_USERNAME
+        fromDatabase:
+          name: clockin-db
+          property: username
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: clockin-db
+          property: password
+      - key: FRONTEND_URL
+        value: https://clockin-frontend.onrender.com
+
+  # Frontend Static Site
+  - type: web
+    name: clockin-frontend
+    env: static
+    region: oregon
+    plan: free
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./build
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://clockin-backend.onrender.com
+
+databases:
+  - name: clockin-db
+    databaseName: clockindb
+    user: clockin_user
+    region: oregon
+    plan: free 

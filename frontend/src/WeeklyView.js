@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { apiUrl } from './config';
 
 function WeeklyView({ employee, onBack, accessCode }) {
   const [weeklyData, setWeeklyData] = useState(null);
@@ -16,7 +17,7 @@ function WeeklyView({ employee, onBack, accessCode }) {
       setError('');
 
       const response = await axios.get(
-        `/api/admin/employee/${employee.firstName}/${employee.lastName}/weekly?accessCode=${accessCode}`
+        `${apiUrl}/api/admin/employee/${employee.firstName}/${employee.lastName}/weekly?accessCode=${accessCode}`
       );
       setWeeklyData(response.data);
     } catch (err) {

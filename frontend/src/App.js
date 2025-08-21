@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import AdminView from './AdminView';
+import { apiUrl } from './config';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -35,7 +36,7 @@ function App() {
     try {
       // Check if it's an admin login
       if (formData.accessCode === '888') {
-        const adminResponse = await axios.post('/api/admin/login', formData);
+        const adminResponse = await axios.post(`${apiUrl}/api/admin/login`, formData);
         setIsAdmin(true);
         setIsLoggedIn(true);
         setMessage('Admin login successful!');
@@ -43,7 +44,7 @@ function App() {
       }
 
       // Regular employee login
-      const response = await axios.post('/api/time-entries/login', formData);
+      const response = await axios.post(`${apiUrl}/api/time-entries/login`, formData);
       setUser({
         firstName: response.data.firstName,
         lastName: response.data.lastName
@@ -65,7 +66,7 @@ function App() {
     setMessage('');
 
     try {
-      const response = await axios.post('/api/time-entries/clock-in', formData);
+      const response = await axios.post(`${apiUrl}/api/time-entries/clock-in`, formData);
       setCurrentStatus(response.data);
       setMessage('Successfully clocked in!');
       loadHistory();
@@ -82,7 +83,7 @@ function App() {
     setMessage('');
 
     try {
-      const response = await axios.post('/api/time-entries/clock-out', formData);
+      const response = await axios.post(`${apiUrl}/api/time-entries/clock-out`, formData);
       setCurrentStatus(response.data);
       setMessage('Successfully clocked out!');
       loadHistory();
@@ -95,7 +96,7 @@ function App() {
 
   const loadHistory = async () => {
     try {
-      const response = await axios.get(`/api/time-entries/history/${user.firstName}/${user.lastName}?accessCode=${formData.accessCode}`);
+      const response = await axios.get(`${apiUrl}/api/time-entries/history/${user.firstName}/${user.lastName}?accessCode=${formData.accessCode}`);
       setHistory(response.data);
     } catch (err) {
       console.error('Failed to load history:', err);

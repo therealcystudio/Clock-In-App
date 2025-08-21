@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import WeeklyView from './WeeklyView';
+import { apiUrl } from './config';
 
 function AdminView({ onLogout }) {
   const [employees, setEmployees] = useState([]);
@@ -21,11 +22,11 @@ function AdminView({ onLogout }) {
       setError('');
 
       // Load all employees data
-      const employeesResponse = await axios.get(`/api/admin/all-employees?accessCode=${accessCode}`);
+      const employeesResponse = await axios.get(`${apiUrl}/api/admin/all-employees?accessCode=${accessCode}`);
       setEmployees(employeesResponse.data);
 
       // Load summary
-      const summaryResponse = await axios.get(`/api/admin/summary?accessCode=${accessCode}`);
+      const summaryResponse = await axios.get(`${apiUrl}/api/admin/summary?accessCode=${accessCode}`);
       setSummary(summaryResponse.data);
     } catch (err) {
       setError(err.response?.data?.error || 'Failed to load admin data');
@@ -36,7 +37,7 @@ function AdminView({ onLogout }) {
 
   const loadEmployeeDetails = async (firstName, lastName) => {
     try {
-      const response = await axios.get(`/api/admin/employee/${firstName}/${lastName}?accessCode=${accessCode}`);
+      const response = await axios.get(`${apiUrl}/api/admin/employee/${firstName}/${lastName}?accessCode=${accessCode}`);
       setSelectedEmployee(response.data);
       setShowWeeklyView(false);
     } catch (err) {
